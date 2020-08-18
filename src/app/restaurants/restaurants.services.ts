@@ -9,6 +9,7 @@ import { Http, Response } from '@angular/http'
 
 import { MEAT_API } from '../app.api'
 import { ErrorHandler } from '../app.error-handle'
+import { MenuItem } from 'app/restaurant-detail/menu-item/menu-item.model'
 
 //Decorator is used for use another decorator inside them.
 @Injectable()
@@ -30,6 +31,12 @@ export class RestaurantsService {
 
   reviewsOfRestaurant(id: string): Observable<any> {
     return this.http.get(`${MEAT_API}/restaurants/${id}/reviews`)
+      .map(response => response.json())
+      .catch(ErrorHandler.handleError)
+  }
+
+  menuOfRestaurant(id: string): Observable<MenuItem[]> {
+    return this.http.get(`${MEAT_API}/restaurants/${id}/menu`)
       .map(response => response.json())
       .catch(ErrorHandler.handleError)
   }
