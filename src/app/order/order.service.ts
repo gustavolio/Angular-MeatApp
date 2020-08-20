@@ -4,7 +4,12 @@ import { CartItem } from "app/restaurant-detail/shopping-cart/cart-item.model";
 
 @Injectable()
 export class OrderService {
+
     constructor(private cartService: ShoppingCartService){
+    }
+
+    itemsValue():number {
+        return this.cartService.total();
     }
 
     cartItems(): CartItem[] {
