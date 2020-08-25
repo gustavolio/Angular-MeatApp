@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -7,7 +6,11 @@ import { InputComponent } from './input/input.component';
 import { RadioComponent } from './radio/radio.component';
 import { RatingComponent } from './rating/rating.component';
 
-@NgModule({ 
+import { RestaurantsService } from 'app/restaurants/restaurants.services';
+import { ShoppingCartService } from 'app/restaurant-detail/shopping-cart/shopping-cart.service';
+import { OrderService } from 'app/order/order.service';
+
+@NgModule({
     imports: [
         CommonModule,
         FormsModule,
@@ -28,4 +31,15 @@ import { RatingComponent } from './rating/rating.component';
     ],
     providers: [],
 })
-export class SharedModule { }
+export class SharedModule {
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: SharedModule,
+            providers: [
+                RestaurantsService,
+                ShoppingCartService,
+                OrderService
+            ],
+        }
+    }
+}
