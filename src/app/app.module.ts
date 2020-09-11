@@ -24,33 +24,35 @@ import { OrderSumaryComponent } from './order-sumary/order-sumary.component';
 
 import { SharedModule } from './shared/shared.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
-    RestaurantsComponent,
-    RestaurantComponent,
-    RestaurantDetailComponent,
-    MenuComponent,
-    MenuItemComponent,
-    ShoppingCartComponent,
-    ReviewsComponent,
-    OrderSumaryComponent,
-    NotFoundComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpModule,
-    SharedModule.forRoot(),
-    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
-  ],
-  providers: [
-    {provide: LOCALE_ID, useValue: 'pt-BR'}
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        HomeComponent,
+        RestaurantsComponent,
+        RestaurantComponent,
+        RestaurantDetailComponent,
+        MenuComponent,
+        MenuItemComponent,
+        ShoppingCartComponent,
+        ReviewsComponent,
+        OrderSumaryComponent,
+        NotFoundComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpModule,
+        SharedModule.forRoot(),
+        RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules })
+    ],
+    providers: [
+        { provide: LocationStrategy, useClass: HashLocationStrategy}, //Estratégia de Navegação Hash Location
+        { provide: LOCALE_ID, useValue: 'pt-BR' }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
