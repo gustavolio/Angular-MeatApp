@@ -4,6 +4,8 @@ import { Express } from 'express';
 import * as fs from 'fs';
 import * as https from 'https';
 
+import {handleAuthentication} from './auth';
+
 const server: Express = jsonServer.create()
 const router = jsonServer.router('db.json')
 const middlewares = jsonServer.defaults()
@@ -13,9 +15,7 @@ server.use(middlewares)
 
 server.use(jsonServer.bodyParser);
 
-server.post('/login', (req, resp)=> {
-    resp.json({message:' ok'});
-})
+server.post('/login', handleAuthentication);
 
 // Use default router
 server.use(router)
@@ -27,4 +27,4 @@ const options = {
 
 https.createServer(options, server).listen(3001, () => {
   console.log('JSON Server is running on https://localhost:3001');
-})
+});
