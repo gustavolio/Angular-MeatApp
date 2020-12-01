@@ -123,7 +123,7 @@ ng serve
 * Components:
     * Components are custom elements that can be reused;
     * Angular components have 'Classes' with lifecycle, 'Templates' that define appearance and a 'selector' or 'tag' for use this component in other parts of application; 
-    * Components are declarated in Angular modules (With @NgModule Decorator), if the compoent os declarated in root module, all application have access to this module.
+    * Components are declarated in Angular modules (With @NgModule Decorator), if a compoent o is declarated in root module, all application have access to this module.
     * For create components:
     ```javascript
     //In cmd or terminal with project folder open
